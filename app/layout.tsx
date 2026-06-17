@@ -7,6 +7,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
+  icons: {
+    icon: "/assets/vitek-icon.svg",
+    apple: "/assets/vitek-apple-icon.svg",
+  },
 };
 
 export default function RootLayout({

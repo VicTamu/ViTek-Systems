@@ -60,8 +60,49 @@ export function Nav() {
   return (
     <>
       <header className={cn("site-header", isScrolled && "is-scrolled")}>
-        <a className="wordmark" href="#home" onClick={closeMenu}>
-          <span>{siteConfig.name}</span>
+        <a
+          className="wordmark"
+          href="#home"
+          onClick={closeMenu}
+          aria-label={`${siteConfig.name} home`}
+        >
+          <span className="wordmark-lockup">
+            <span className="wordmark-bracket">&lt;</span>
+            <svg
+              className="wordmark-mark"
+              viewBox="1.3 1.3 17.4 18.4"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <defs>
+                <linearGradient
+                  id="wordmark-gradient"
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="1"
+                >
+                  <stop offset="0" stopColor="#7c5cfc" />
+                  <stop offset="1" stopColor="#9b7fff" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M3 3 L10 18 L17 3"
+                fill="none"
+                stroke="url(#wordmark-gradient)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="wordmark-text">
+              iTek <span className="wordmark-s">S</span>ystems
+              <span className="wordmark-bracket">&gt;</span>
+              <span className="wordmark-cursor" aria-hidden="true">
+                |
+              </span>
+            </span>
+          </span>
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -112,6 +153,37 @@ export function Nav() {
                 closed: { transition: { staggerChildren: 0.04 } },
               }}
             >
+              <motion.div
+                className="mobile-menu-mark"
+                aria-hidden="true"
+                variants={{
+                  open: { y: 0, opacity: 1 },
+                  closed: { y: 24, opacity: 0 },
+                }}
+              >
+                <svg viewBox="0 0 48 36" focusable="false">
+                  <defs>
+                    <linearGradient
+                      id="mobile-menu-gradient"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="1"
+                    >
+                      <stop offset="0" stopColor="#7c5cfc" />
+                      <stop offset="1" stopColor="#9b7fff" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M7 10 L24 33 L41 10"
+                    fill="none"
+                    stroke="url(#mobile-menu-gradient)"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </motion.div>
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.href}

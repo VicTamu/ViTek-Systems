@@ -138,21 +138,65 @@ section {
   line-height: 1;
 }
 
-.wordmark span {
-  font-family: "Syne", sans-serif;
-  font-size: 1.25rem;
-  font-weight: 800;
+.wordmark-lockup {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.1em;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.12rem;
+  font-weight: 700;
   letter-spacing: 0;
+  line-height: 1;
 }
 
-.wordmark small {
-  margin-top: 0.25rem;
-  color: var(--text-muted);
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+.wordmark-mark {
+  height: 0.84em;
+  width: auto;
+  flex-shrink: 0;
+  align-self: baseline;
+}
+
+.wordmark-text {
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.wordmark-bracket {
+  color: var(--accent-hover);
+}
+
+.wordmark-text .wordmark-bracket {
+  margin-left: 0.3em;
+}
+
+.wordmark-s,
+.wordmark-cursor {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.wordmark-s {
+  font-size: 1.2em;
+}
+
+.wordmark-cursor {
+  margin-left: 0.12em;
+  animation: wordmark-blink 1.05s step-end infinite;
+}
+
+@keyframes wordmark-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-cursor {
+    animation: none;
+  }
 }
 
 .desktop-nav {
@@ -213,6 +257,17 @@ section {
   display: grid;
   width: min(420px, calc(100% - 48px));
   gap: 0.75rem;
+}
+
+.mobile-menu-mark {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-menu-mark svg {
+  width: 3rem;
+  height: auto;
 }
 
 .mobile-menu a {
@@ -1184,6 +1239,10 @@ section {
     grid-template-columns: 1fr auto;
     border-radius: 20px;
     padding-right: 0.7rem;
+  }
+
+  .wordmark-lockup {
+    font-size: 1rem;
   }
 
   .desktop-nav,
