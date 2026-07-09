@@ -9,6 +9,8 @@ import { navLinks } from "@/components/site-data";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const sectionId = (href: string) => href.slice(href.indexOf("#") + 1);
+
 export function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +22,9 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const sections = navLinks
-      .map((link) => document.querySelector<HTMLElement>(link.href))
+      .map((link) =>
+        document.querySelector<HTMLElement>(`#${sectionId(link.href)}`)
+      )
       .filter((section): section is HTMLElement => section !== null);
 
     const observer = new IntersectionObserver(
@@ -62,7 +66,7 @@ export function Nav() {
       <header className={cn("site-header", isScrolled && "is-scrolled")}>
         <a
           className="wordmark"
-          href="#home"
+          href="/#home"
           onClick={closeMenu}
           aria-label={`${siteConfig.name} home`}
         >
@@ -110,8 +114,8 @@ export function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className={cn(activeSection === link.href.slice(1) && "active")}
-              onClick={() => setActiveSection(link.href.slice(1))}
+              className={cn(activeSection === sectionId(link.href) && "active")}
+              onClick={() => setActiveSection(sectionId(link.href))}
             >
               {link.label}
             </a>
@@ -119,7 +123,7 @@ export function Nav() {
         </nav>
 
         <Button asChild className="desktop-quote" size="sm">
-          <a href="#contact">Free Quote</a>
+          <a href="/#contact">Free Quote</a>
         </Button>
 
         <button
@@ -189,7 +193,7 @@ export function Nav() {
                   key={link.href}
                   href={link.href}
                   onClick={() => {
-                    setActiveSection(link.href.slice(1));
+                    setActiveSection(sectionId(link.href));
                     closeMenu();
                   }}
                   variants={{
@@ -203,7 +207,7 @@ export function Nav() {
               ))}
               <motion.a
                 className="mobile-quote"
-                href="#contact"
+                href="/#contact"
                 onClick={closeMenu}
                 variants={{
                   open: { y: 0, opacity: 1 },

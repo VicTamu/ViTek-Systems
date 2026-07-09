@@ -4,6 +4,7 @@ export type Project = {
   image: string;
   href: string;
   tone: string;
+  tags?: readonly string[];
 };
 
 export type BuildTier = {
@@ -23,10 +24,10 @@ export type MaintenancePlan = {
 };
 
 export const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "What We Do", href: "#what-we-do" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/#work" },
+  { label: "What We Do", href: "/#what-we-do" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 export const trustChips = [
@@ -43,6 +44,7 @@ export const projects = [
     image: "/images/SLA.jpg",
     href: "https://www.startuplist.africa/",
     tone: "Data intelligence platform",
+    tags: ["Web platform", "Directory & search", "SEO"],
   },
   {
     title: "Pampered by Yuni",
@@ -51,6 +53,7 @@ export const projects = [
     image: "/images/Pampered%20by%20Yuni%20Hero.jpg",
     href: "https://pamperedbyyuni.com/",
     tone: "Self-care beauty brand",
+    tags: ["Brand site", "Ecommerce", "Booking"],
   },
   {
     title: "DispatchOps",
@@ -59,6 +62,7 @@ export const projects = [
     image: "/images/DispatchOps.jpg",
     href: "https://www.dispatchops.io/",
     tone: "AI logistics automation",
+    tags: ["AI automation", "SaaS dashboard", "Integrations"],
   },
   {
     title: "Eunoia",
@@ -67,6 +71,7 @@ export const projects = [
     image: "/images/Eunoia%20Landing.jpg",
     href: "https://www.myeunoia.online/",
     tone: "AI journal app, in progress",
+    tags: ["AI web app", "Journaling", "In progress"],
   },
 ] as const satisfies Project[];
 

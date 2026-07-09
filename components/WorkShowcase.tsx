@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
 import { SectionIntro } from "@/components/section-intro";
@@ -51,7 +52,7 @@ export function WorkShowcase() {
       </div>
       <div className="page-container work-action">
         <Button asChild variant="secondary">
-          <a href="#contact">See More Work</a>
+          <Link href="/work">See More Work</Link>
         </Button>
       </div>
     </section>

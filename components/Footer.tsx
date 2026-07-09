@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="page-container footer-grid">
-        <a className="wordmark" href="#home">
+        <a className="wordmark" href="/#home">
           <span>{siteConfig.name}</span>
         </a>
         <p>Polished websites and apps for local brands ready to look current.</p>
